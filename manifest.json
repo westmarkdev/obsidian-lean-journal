@@ -1,0 +1,11 @@
+{
+  "id": "lean-journal-plugin",
+  "name": "Lean Journal",
+  "version": "0.1.1",
+  "minAppVersion": "0.15.0",
+  "description": "This is a simple lean journal plugin",
+  "author": "Obsidian",
+  "authorUrl": "https://obsidian.md",
+  "fundingUrl": "https://obsidian.md/pricing",
+  "isDesktopOnly": false
+}
