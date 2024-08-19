@@ -1,3 +1,16 @@
+// TODO: Refactor the MainTS into more managable pieces:
+// 1. Create separate files for different functionalities:
+
+// 1a. JournalManager.ts: Handles journal entry creation and modification
+// 1b. MOCManager.ts: Manages Map of Contents creation and updates
+// 1c. LogManager.ts: Handles log property operations (including the LogCleaner)
+// 1d. SettingsManager.ts: Manages plugin settings
+
+// 2. Create a utils.ts file for utility functions
+// 3. Move the LeanJournalSettingTab to its own file
+// 4. Simplify the main LeanJournalPlugin class
+// 5.  We should move them to a separate file in a 'tests' folder.  then add a development-only command to run these tests.
+
 import {
   App,
   Notice,
