@@ -1,5 +1,22 @@
 # Manual Test Plan for Obsidian Lean Journal Plugin
 
+### Refactor Plan - 2024-08-19
+
+```typescript
+// TODO: Refactor the MainTS into more managable pieces:
+// 1. Create separate files for different functionalities:
+
+// 1a. Test JournalManager.ts: Handles journal entry creation and modification
+// 1b. MOCManager.ts: Manages Map of Contents creation and updates
+// 1c. LogManager.ts: Handles log property operations (including the LogCleaner)
+// 1d. SettingsManager.ts: Manages plugin settings
+
+// 2. Create a utils.ts file for utility functions
+// 3. Move the LeanJournalSettingTab to its own file
+// 4. Simplify the main LeanJournalPlugin class
+// 5.  We should move them to a separate file in a 'tests' folder.  then add a development-only command to run these tests.
+```
+
 ## 1. Basic Functionality
 
 1.1. Installation
@@ -13,7 +30,7 @@
 - [x] Using the "Add Journal Entry" command creates a new journal entry
 - [x] Entries are added in reverse chronological order
 - [ ] Correct date and time formats are used based on settings
-  - Need to test with different date and time formats: wait a whole day to see if the date changes correctly
+	- Need to test with different date and time formats: wait a whole day to see if the date changes correctly
 
 1.3. Settings
 
@@ -133,4 +150,6 @@ After completing all tests, summarize:
 - Number of failed tests
 - List of any critical issues found
 
-This test plan will help ensure that all aspects of the plugin are functioning correctly before we proceed with implementing error handling and notifications. Once we have the results from this test plan, we can prioritize which areas need additional error handling and what types of notifications would be most beneficial to users.
+This test plan will help ensure that all aspects of the plugin are functioning correctly before we proceed with
+implementing error handling and notifications. Once we have the results from this test plan, we can prioritize which
+areas need additional error handling and what types of notifications would be most beneficial to users.
