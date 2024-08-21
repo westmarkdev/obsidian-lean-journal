@@ -15,6 +15,11 @@ export class LogManager {
   }
 
   async addLogPropertyToFile(file: TFile) {
+    // Check if the file already has a log property before adding it
+    const metadata = this.app.metadataCache.getFileCache(file);
+    if (metadata?.frontmatter?.log) {
+      return; // File already has a log property
+    }
     try {
       const content = await this.app.vault.read(file);
       const createdDate = moment(file.stat.ctime).format(
