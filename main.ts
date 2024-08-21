@@ -10,12 +10,23 @@ import { LogManager } from './src/LogManager';
 import { JOURNAL_ICON } from './src/constants';
 import { runLogCleanerTests } from './src/tests/test_logs';
 
+// BUG:When the plugin is enabled on Obsidian Sync, it causes duplicate 'log' properties to be added when files are created.
+// ENHANCEMENT: Optimize plugin startup behavior to reduce impact on Obsidian launch time
+// ENHANCEMENT: Delay initialization of auto-logging and MOC creation until needed or after a short startup delay
+// ENHANCEMENT: Change the log property addition to avoid unnecessary operations on files that already have log properties
+// QUALITY: Improve Overall plugin performacne and reduce resource usage during Obsidian startup
 export default class LeanJournalPlugin extends Plugin {
+  // TODO: Delay MOC and auto-logging initialization
+  // The plugin needs to wait for Obsidian's layout to be ready before initializing auto-features.
+  // Add an an additional 3-second delay after the layout is ready, giving Obsidian more time to settle.
+  // Auto-logging and MOC creation should ONLY set up if they're enabled in settings.
+  // The initializeAutoFeatures method must ensure that these features are set up when needed, even if they weren't initialized at startup.
+  // The addJournalEntry method needs to call initializeAutoFeatures, ensuring that auto-logging and MOC creation are set up when the user adds a journal entry, if they weren't already.
   settings: LeanJournalSettings;
   settingsManager: SettingsManager;
   journalManager: JournalManager;
-  mocManager: MOCManager;
-  logManager: LogManager;
+  mocManager: MOCManager; // TODO: Modify the MOCManager to support delayed start.
+  logManager: LogManager; // FIXME: Address the specific concern about the add log property function being called on every file.
 
   async onload() {
     this.settingsManager = new SettingsManager(this);
